@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "ignorePatterns": ["dist/**/*"]
+}

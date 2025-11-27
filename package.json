@@ -1,0 +1,35 @@
+{
+  "name": "yt-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"*\" dev",
+    "build": "pnpm build:packages && pnpm build:apps",
+    "build:packages": "./node_modules/.bin/tsc --project packages/ui/tsconfig.json",
+    "build:apps": "./node_modules/.bin/tsc --project apps/api/tsconfig.json && cd apps/web && next build",
+    "test": "pnpm --recursive test",
+    "lint": "pnpm --recursive lint",
+    "format": "prettier --write .",
+    "type-check": "./node_modules/.bin/tsc --noEmit --project packages/ui/tsconfig.json && ./node_modules/.bin/tsc --noEmit --project apps/api/tsconfig.json && cd apps/web && next lint --dir ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
